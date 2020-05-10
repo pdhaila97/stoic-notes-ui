@@ -79,7 +79,7 @@ function LoginPage (props: any) {
 
     return (
         <Box height="inherit" width="inherit" display="flex" flexDirection="column">
-            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" flexGrow={4}>
+            <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" flexGrow={4} py={2}>
                 <StyledTextField
                 id="outlined-helperText"
                 label="Name"
