@@ -81,7 +81,7 @@ function EditableNote (props: any) {
                     </Box>
                 </StyledCard>
             </Box>
-            <Typography variant="caption">Last updated on: {timestampToDate(note.updatedAt)}</Typography>
+            {!props.isNew && <Typography variant="caption">Last updated on: {timestampToDate(note.updatedAt)}</Typography>}
             <Box display="flex" justifyContent="center">
                 <StyledButton variant="contained" onClick={handleSave}>Save</StyledButton>
                 {!props.isNew && <StyledButton variant="contained" onClick={handleDelete}>Delete</StyledButton>}
