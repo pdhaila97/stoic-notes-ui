@@ -24,7 +24,7 @@ function LandingPage (props: any) {
         <Box display="flex" flexDirection="column" justifyContent="center" flexGrow={4}>
             <Box p={3} textAlign="center">
                 <Typography variant="h5">Welcome to Stoic Notes!</Typography>
-                <Box pt={2}><Typography variant="body1">Please continue to Login/Signup!</Typography></Box>
+                <Box pt={2}><Typography variant="body1">Please continue to Login/Signup</Typography></Box>
             </Box>
         </Box>
         <Box display="flex" justifyContent="center" flexGrow={1}>

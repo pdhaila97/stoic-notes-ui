@@ -29,7 +29,7 @@ function App () {
                         <PublicRoute path="/register" component={SignupPage} />
                         <AuthRoute path="/dashboard" component={DashboardPage} history={history()} />
                         <AuthRoute exact path="/note/:id" component={Note} history={history()}/>
-                        <AuthRoute exact path="/note" component={EditableNote} note={{}} history={history()}/>
+                        <AuthRoute exact path="/note" component={EditableNote} note={{}} history={history()} isNew={true}/>
                     </Switch>
                 </Router>
             </Box>

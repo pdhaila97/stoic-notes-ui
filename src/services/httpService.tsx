@@ -57,3 +57,13 @@ export const createNewNote = (note: any) => {
         }
     })
 }
+
+export const deleteNoteById = (_id: string) => {
+    const http = httpService();
+    const token = getUserToken();
+    return http.delete(`/notes/${_id}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+}

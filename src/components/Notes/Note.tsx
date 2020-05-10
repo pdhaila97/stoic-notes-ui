@@ -13,7 +13,7 @@ function Note (props: any) {
 
     return (
         <>
-            {note && <EditableNote history={props.history} note={note}/>}
+            {note && <EditableNote history={props.history} note={note} isNew={false}/>}
         </>
     )
 }

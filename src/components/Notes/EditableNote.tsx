@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Box, Card, TextField, Button } from "@material-ui/core";
+import { Box, Card, TextField, Button, Typography } from "@material-ui/core";
 import styled from "styled-components";
-import { updateNoteById, createNewNote } from "../../services/httpService";
+import { updateNoteById, createNewNote, deleteNoteById } from "../../services/httpService";
 import Header from "../Header";
+import { timestampToDate } from "../../services/utilsService";
 
 const StyledCard = styled(Card)`
 padding: 8px 16px;
@@ -42,6 +43,14 @@ function EditableNote (props: any) {
                 props.history.push("/");
             });
         }
+    };
+
+    const handleDelete = () => {
+        if(note._id) {
+            deleteNoteById(note._id).then(() => {
+                props.history.push("/");
+            })
+        }
     }
 
     return (
@@ -72,7 +81,11 @@ function EditableNote (props: any) {
                     </Box>
                 </StyledCard>
             </Box>
-            <StyledButton variant="contained" onClick={handleSave}>Save</StyledButton>
+            <Typography variant="caption">Last updated on: {timestampToDate(note.updatedAt)}</Typography>
+            <Box display="flex" justifyContent="center">
+                <StyledButton variant="contained" onClick={handleSave}>Save</StyledButton>
+                {!props.isNew && <StyledButton variant="contained" onClick={handleDelete}>Delete</StyledButton>}
+            </Box>
         </Box>
         </>
     )
