@@ -12,11 +12,11 @@ function LandingPage (props: any) {
     `;
 
     const redirectToLogin = () => {
-        props.history.replace("/login");
+        props.history.push("/login");
     }
 
     const redirectToSignup = () => {
-        props.history.replace("/register");
+        props.history.push("/register");
     }
 
     return (
