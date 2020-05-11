@@ -15,7 +15,7 @@ function NoteListItem (props: any) {
     const [checkState, setCheckState]: any = useState({isArchived: note.meta.isArchived, isCompleted: note.meta.isCompleted});
     const handleCheck = (checkClicked: string) => {
         props.handleCheck(note._id, {meta: {[checkClicked]: !checkState[checkClicked]}}).then((response: any) => {
-            setCheckState({...checkState, [checkClicked]:response.data.meta[checkClicked]});
+            // setCheckState({...checkState, [checkClicked]:response.data.meta[checkClicked]});
         });
         setCheckState({...checkState, [checkClicked]: !checkState[checkClicked]});
     }
