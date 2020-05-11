@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Card, TextField, Button, Typography } from "@material-ui/core";
+import { Box, Card, TextField, Button, Typography, FormControlLabel, Checkbox } from "@material-ui/core";
 import styled from "styled-components";
 import { updateNoteById, createNewNote, deleteNoteById } from "../../services/httpService";
 import Header from "../Header";
@@ -17,6 +17,7 @@ function EditableNote (props: any) {
 
     const [title, setTitle] = useState({value: note.title, error: false});
     const [description, setDescription] = useState({value: note.description, error: false});
+    const [isNoteCompleted, setIsNoteCompleted] = useState(note.meta? note.meta.isCompleted : false);
 
     const StyledButton = styled(Button)`
         background-color: ${(props: any) => props.theme.palette.secondary.main};
@@ -35,11 +36,11 @@ function EditableNote (props: any) {
             return;
         }
         if (note._id) {
-            updateNoteById(note._id, {title: title.value, description: description.value}).then((response) => {
+            updateNoteById(note._id, {title: title.value, description: description.value, meta: {isCompleted: isNoteCompleted}}).then((response) => {
                 props.history.push("/");
             });
         } else {
-            createNewNote({title: title.value, description: description.value}).then((response) => {
+            createNewNote({title: title.value, description: description.value, meta: {isCompleted: isNoteCompleted}}).then((response) => {
                 props.history.push("/");
             });
         }
@@ -80,6 +81,17 @@ function EditableNote (props: any) {
                         />
                     </Box>
                 </StyledCard>
+                <FormControlLabel
+                    control={
+                    <Checkbox
+                        checked={isNoteCompleted}
+                        onChange={() => {setIsNoteCompleted(!isNoteCompleted)}}
+                        name="checkedB"
+                        color="primary"
+                    />
+                    }
+                    label="completed"
+                />
             </Box>
             {!props.isNew && <Typography variant="caption">Last updated on: {timestampToDate(note.updatedAt)}</Typography>}
             <Box display="flex" justifyContent="center">

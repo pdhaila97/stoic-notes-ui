@@ -31,7 +31,7 @@ function DashboardPage (props: any) {
         <>
         <Header />
         <Box height="inherit" width="inherit" display="flex" flexDirection="column" alignItems="center">
-            <Box display="flex" flexDirection="column" pt={2}>
+            <Box width="inherit" display="flex" flexDirection="column" pt={2}>
                 <NotesList notes={notes} history={props.history}/>
             </Box>
             <StyledButton variant="contained" onClick={addNewNote}>Add new</StyledButton>
