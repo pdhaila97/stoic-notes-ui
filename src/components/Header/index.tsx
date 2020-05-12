@@ -87,7 +87,7 @@ function Header (props: any) {
                             </Typography>
                         </ExpansionPanelDetails>
                     </ExpansionPanel>}
-                    {!props.showArchiveOpt.disabled && <MenuItem onClick={props.onChangeArchive}>{props.showArchiveOpt.text}</MenuItem>}
+                    {(!props.showArchiveOpt || !props.showArchiveOpt.disabled) && <MenuItem onClick={props.onChangeArchive}>{props.showArchiveOpt.text}</MenuItem>}
                 </Menu>
             </Box>
             </Toolbar>
