@@ -68,7 +68,7 @@ function Header (props: any) {
                     onClose={handleClose}
                 >
                     <MenuItem onClick={logout}>Logout<StyledExitToAppIcon /></MenuItem>
-                    {/* <ExpansionPanel>
+                    {props.onSortSelect && <ExpansionPanel>
                         <ExpansionPanelSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
@@ -76,17 +76,18 @@ function Header (props: any) {
                         >
                         <Typography>Sort By</Typography>
                         </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
+                        <ExpansionPanelDetails onClick={() => props.onSortSelect('title')}>
                             <Typography variant="subtitle2">
-                                Date Modified
+                                Title
                             </Typography>
                         </ExpansionPanelDetails>
-                        <ExpansionPanelDetails>
+                        <ExpansionPanelDetails onClick={() => props.onSortSelect('meta.isCompleted')}>
                             <Typography variant="subtitle2">
                                 Incomplete First
                             </Typography>
                         </ExpansionPanelDetails>
-                    </ExpansionPanel> */}
+                    </ExpansionPanel>}
+                    {!props.showArchiveOpt.disabled && <MenuItem onClick={props.onChangeArchive}>{props.showArchiveOpt.text}</MenuItem>}
                 </Menu>
             </Box>
             </Toolbar>

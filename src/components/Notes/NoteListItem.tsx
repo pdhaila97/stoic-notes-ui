@@ -12,12 +12,15 @@ function NoteListItem (props: any) {
         margin: 0px 16px;
         background: ${(props: any) => props.theme.palette.primary.light}
     `;
-    const [checkState, setCheckState]: any = useState({isArchived: note.meta.isArchived, isCompleted: note.meta.isCompleted});
+    const [checkState, setCheckState]: any = useState({
+            isArchived: note.meta.isArchived,
+            isCompleted: note.meta.isCompleted
+    });
     const handleCheck = (checkClicked: string) => {
+        setCheckState({...checkState, [checkClicked]: !checkState[checkClicked]});
         props.handleCheck(note._id, {meta: {[checkClicked]: !checkState[checkClicked]}}).then((response: any) => {
             // setCheckState({...checkState, [checkClicked]:response.data.meta[checkClicked]});
         });
-        setCheckState({...checkState, [checkClicked]: !checkState[checkClicked]});
     }
 
     return (

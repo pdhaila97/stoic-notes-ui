@@ -15,21 +15,33 @@ const StyledButton = styled(Button)`
 
 function DashboardPage (props: any) {   
     const [notes, setNotes] = useState([]);
+    const [sortSelected, setSortSelected] = useState({});
+    const [showArchive, setShowArchive] = useState(false);
+    const [showArchiveOpt, setShowArchiveOpt] = useState({disabled: false, text: "Show Archived"})
     useEffect(() => {
-        getAllNotes().then(
+        getAllNotes(sortSelected, showArchive).then(
             (response) => {
                 setNotes(response.data);
             }
         )
-    }, []);
+    }, [sortSelected, showArchive]);
 
     const addNewNote = () => {
         props.history.push('/note');
     }
 
+    const onSortSelect = (sort: string) => {
+        setSortSelected({asc: sort});
+    }
+
+    const onChangeArchive = () => {
+        setShowArchive(!showArchive);
+        setShowArchiveOpt(!showArchive ? {...showArchiveOpt, text: "Hide Archived"} : {...showArchiveOpt, text: "Show Archived"});
+    }
+
     return (
         <>
-        <Header />
+        <Header onSortSelect={onSortSelect} onChangeArchive={onChangeArchive} showArchiveOpt={showArchiveOpt}/>
         <Box height="inherit" width="inherit" display="flex" flexDirection="column" alignItems="center">
             <Box width="inherit" display="flex" flexDirection="column" pt={2}>
                 <NotesList notes={notes} history={props.history}/>

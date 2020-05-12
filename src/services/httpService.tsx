@@ -18,12 +18,16 @@ export const registerUser = (user: any) => {
 }
 
 
-export const getAllNotes = () => {
+export const getAllNotes = (sort: any, showArchive: any) => {
     const http = httpService();
     const token = getUserToken();
     return http.get("/notes", {
         headers: {
             Authorization: `Bearer ${token}`
+        },
+        params: {
+            sortAsc: sort.asc,
+            showArchive
         }
     })
 }
