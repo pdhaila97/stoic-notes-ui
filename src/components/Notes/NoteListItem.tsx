@@ -5,13 +5,14 @@ import styled from 'styled-components';
 const StyledFormControlLabel = styled(FormControlLabel)`
 `;
 
+const StyledCard = styled(Card)`
+padding: 8px 16px;
+margin: 0px 16px;
+background: ${(props: any) => props.theme.palette.primary.light}
+`;
+
 function NoteListItem (props: any) {
     const {note} = props;
-    const StyledCard = styled(Card)`
-        padding: 8px 16px;
-        margin: 0px 16px;
-        background: ${(props: any) => props.theme.palette.primary.light}
-    `;
     const [checkState, setCheckState]: any = useState({
             isArchived: note.meta.isArchived,
             isCompleted: note.meta.isCompleted

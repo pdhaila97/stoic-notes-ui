@@ -41,8 +41,10 @@ function Header (props: any) {
     return (
         <AppBar position="sticky">
             <Toolbar>
-                <StyledIconButton edge="start" onClick={goBack}><ArrowBackIcon /></StyledIconButton>
                 <Box>
+                    {!props.hideBackArrow && <StyledIconButton edge="start" onClick={goBack}><ArrowBackIcon /></StyledIconButton>}
+                </Box>
+                <Box display="flex" justifyContent="flex-end" width={1}>
                 <IconButton
                     aria-label="account of current user"
                     aria-controls="menu-appbar"

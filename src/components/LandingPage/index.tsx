@@ -12,14 +12,14 @@ width: 100px;
 height: 100px;
 `;
 
-function LandingPage (props: any) {
+const StyledButton = styled(Button)`
+    background-color: ${(props: any) => props.theme.palette.secondary.main};
+    width: 100px;
+    height: 40px;
+    margin: 8px;
+`;
 
-    const StyledButton = styled(Button)`
-        background-color: ${(props: any) => props.theme.palette.secondary.main};
-        width: 100px;
-        height: 40px;
-        margin: 8px;
-    `;
+function LandingPage (props: any) {
 
     const redirectToLogin = () => {
         props.history.push("/login");
