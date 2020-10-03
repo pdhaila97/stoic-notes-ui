@@ -8,8 +8,8 @@ import Backround from '../../images/notes.gif';
 const ImageDiv = styled(Box)`
 background: url(${Backround});
 background-size: cover;
-width: 100px;
-height: 100px;
+width: 200px;
+height: 200px;
 `;
 
 const StyledButton = styled(Button)`
