@@ -36,7 +36,7 @@ function EditableNote (props: any) {
            setIsNoteCompleted(note.meta? note.meta.isCompleted : false);
            setIsLoading(false);
        } 
-    }, [note])
+    }, [note]);
 
     const handleSave = () => {
         if(!title.value || title.value.trim() === '') {
