@@ -11,11 +11,7 @@ function Note (props: any) {
         });
     }, [_id]);
 
-    return (
-        <>
-            {note && <EditableNote history={props.history} note={note} isNew={false}/>}
-        </>
-    )
+    return <EditableNote history={props.history} note={note} isNew={false}/>
 }
 
 export default Note;

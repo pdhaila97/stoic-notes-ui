@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button } from '@material-ui/core';
 import styled from 'styled-components';
-import Backround from '../../images/moksha.jpg';
+import Backround from '../../images/notes.gif';
 
 
 

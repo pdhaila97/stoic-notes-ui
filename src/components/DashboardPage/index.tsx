@@ -11,7 +11,7 @@ const StyledButton = styled(Button)`
     background-color: ${(props: any) => props.theme.palette.secondary.main};
     width: 150px;
     height: 40px;
-    margin: 8px;
+    margin: 16px;
 `;
 
 function DashboardPage (props: any) {   
@@ -46,7 +46,7 @@ function DashboardPage (props: any) {
     return (
         <>
         <Header hideBackArrow={true} onSortSelect={onSortSelect} onChangeArchive={onChangeArchive} showArchiveOpt={showArchiveOpt}/>
-        <Box height="inherit" width="inherit" display="flex" flexDirection="column" alignItems="center">
+        <Box width="inherit" display="flex" flexDirection="column" alignItems="center">
             <StyledButton variant="contained" onClick={addNewNote}>Add new</StyledButton>
             {!isLoading && <Box width="inherit" display="flex" flexDirection="column" pb={2}>
                 <NotesList notes={notes} history={props.history}/>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Card, TextField, Button, Typography, FormControlLabel, Checkbox } from "@material-ui/core";
 import styled from "styled-components";
 import { updateNoteById, createNewNote, deleteNoteById } from "../../services/httpService";
@@ -24,10 +24,19 @@ function EditableNote (props: any) {
     
     const {note} = props;
 
-    const [title, setTitle] = useState({value: note.title, error: false});
-    const [description, setDescription] = useState({value: note.description, error: false});
-    const [isNoteCompleted, setIsNoteCompleted] = useState(note.meta? note.meta.isCompleted : false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [title, setTitle] = useState<{value: string, error: boolean}>({value: "", error: false});
+    const [description, setDescription] = useState<{value: string, error: boolean}>({value: "", error: false});
+    const [isNoteCompleted, setIsNoteCompleted] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+       if(note) {
+           setTitle({value: note.title, error: false});
+           setDescription({value: note.description, error: false});
+           setIsNoteCompleted(note.meta? note.meta.isCompleted : false);
+           setIsLoading(false);
+       } 
+    }, [note])
 
     const handleSave = () => {
         if(!title.value || title.value.trim() === '') {
